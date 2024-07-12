@@ -1,0 +1,41 @@
+.vc-uwuify-modal-content {
+    padding: 1em;
+}
+
+.vc-uwuify-modal-header {
+    justify-content: space-between;
+    align-content: center;
+}
+
+.vc-uwuify-modal-header h1 {
+    margin: 0;
+}
+
+.vc-uwuify-accessory {
+    color: var(--text-muted);
+    margin-top: 0.5em;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.vc-uwuify-accessory svg {
+    margin-right: 0.25em;
+}
+
+.vc-uwuify-dismiss {
+    all: unset;
+    cursor: pointer;
+    color: var(--text-link);
+}
+
+.vc-uwuify-dismiss:is(:hover, :focus) {
+    text-decoration: underline;
+}
+
+.vc-uwuify-auto-uwuify {
+    color: var(--green-360);
+}
+
+.vc-uwuify-chat-button {
+    scale: 1.085;
+}
