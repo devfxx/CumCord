@@ -15,22 +15,22 @@
     "author": "Vendicated",
     "scripts": {
         "build": "node --require=./scripts/suppressExperimentalWarnings.js scripts/build/build.mjs",
-        "buildStandalone": "pnpm build --standalone",
+        "buildStandalone": "bun run build --standalone",
         "buildWeb": "node --require=./scripts/suppressExperimentalWarnings.js scripts/build/buildWeb.mjs",
-        "buildWebStandalone": "pnpm buildWeb --standalone",
-        "buildReporter": "pnpm buildWebStandalone --reporter --skip-extension",
-        "buildReporterDesktop": "pnpm build --reporter",
-        "watch": "pnpm build --watch",
-        "watchWeb": "pnpm buildWeb --watch",
+        "buildWebStandalone": "bun run buildWeb --standalone",
+        "buildReporter": "bun run buildWebStandalone --reporter --skip-extension",
+        "buildReporterDesktop": "bun run build --reporter",
+        "watch": "bun run build --watch",
+        "watchWeb": "bun run buildWeb --watch",
         "generatePluginJson": "tsx scripts/generatePluginList.ts",
         "generateTypes": "tspc --emitDeclarationOnly --declaration --outDir packages/vencord-types",
         "inject": "node scripts/runInstaller.mjs",
         "uninject": "node scripts/runInstaller.mjs",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-pattern src/userplugins",
         "lint-styles": "stylelint \"src/**/*.css\" --ignore-pattern src/userplugins",
-        "lint:fix": "pnpm lint --fix",
-        "test": "pnpm buildStandalone && pnpm lint && pnpm lint-styles && pnpm testTsc && pnpm generatePluginJson",
-        "testWeb": "pnpm lint && pnpm buildWeb && pnpm testTsc",
+        "lint:fix": "bun run lint --fix",
+        "test": "bun run buildStandalone && bun run lint && bun run lint-styles && bun run testTsc && bun run generatePluginJson",
+        "testWeb": "bun run lint && bun run buildWeb && bun run testTsc",
         "testTsc": "tsc --noEmit"
     },
     "dependencies": {
@@ -76,8 +76,8 @@
         "typescript-transform-paths": "^3.4.7",
         "zip-local": "^0.3.5"
     },
-    "packageManager": "pnpm@9.1.0",
-    "pnpm": {
+    "packageManager": "bun run@9.1.0",
+    "bun run": {
         "patchedDependencies": {
             "eslint-plugin-path-alias@1.0.0": "patches/eslint-plugin-path-alias@1.0.0.patch",
             "eslint@8.46.0": "patches/eslint@8.46.0.patch"
@@ -104,6 +104,6 @@
     },
     "engines": {
         "node": ">=18",
-        "pnpm": ">=9"
+        "bun run": ">=9"
     }
 }
