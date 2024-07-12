@@ -76,25 +76,7 @@
         "typescript-transform-paths": "^3.4.7",
         "zip-local": "^0.3.5"
     },
-    "packageManager": "bun run@9.1.0",
-    "bun run": {
-        "patchedDependencies": {
-            "eslint-plugin-path-alias@1.0.0": "patches/eslint-plugin-path-alias@1.0.0.patch",
-            "eslint@8.46.0": "patches/eslint@8.46.0.patch"
-        },
-        "peerDependencyRules": {
-            "ignoreMissing": [
-                "eslint-plugin-import",
-                "eslint"
-            ]
-        },
-        "allowedDeprecatedVersions": {
-            "source-map-resolve": "*",
-            "resolve-url": "*",
-            "source-map-url": "*",
-            "urix": "*"
-        }
-    },
+    "packageManager": "bun@1.1.18",
     "webExt": {
         "artifactsDir": "./dist",
         "build": {
@@ -103,7 +85,6 @@
         "sourceDir": "./dist/firefox-unpacked"
     },
     "engines": {
-        "node": ">=18",
-        "bun": ">=9"
+        "node": ">=18"
     }
 }
