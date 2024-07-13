@@ -28,7 +28,7 @@ import gitRemote from "~git-remote";
 import { get } from "../utils/simpleGet";
 import { serializeErrors, VENCORD_FILES } from "./common";
 
-const API_BASE = `https://api.github.com/repos/${gitRemote}`;
+const API_BASE = `https://git.kty.lol/api/v1/repos/${gitRemote}`;
 let PendingUpdates = [] as [string, string][];
 
 async function githubGet(endpoint: string) {
