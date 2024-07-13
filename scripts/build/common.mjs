@@ -233,7 +233,9 @@ export const gitRemotePlugin = {
                 remote = res.stdout
                     .trim()
                     .replace("https://git.kty.lol/", "")
+                    .replace("https://github.com/", "")
                     .replace("git@git.kty.lol:", "")
+                    .replace("git@github.com:", "")
                     .replace(/.git$/, "");
             }
 
