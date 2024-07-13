@@ -9,7 +9,7 @@ import { ChannelStore } from "@webpack/common";
 import { DecryptionAccessory, handleDecrypt } from "./DecryptionAccessory";
 import { KeyChatBarIcon, KeyIcon } from "./Encryption";
 import { settings } from "./settings";
-import { decrypt, encrypt } from "./utils";
+import { Encryption } from "./utils";
 
 import definePlugin from "@utils/types";
 
@@ -34,17 +34,20 @@ export default definePlugin({
                 message,
                 channel: ChannelStore.getChannel(message.channel_id),
                 onClick: async () => {
-                    const dec = await decrypt(message.content);
+                    if (!settings.store.secretKey) return;
+
+                    const dec = Encryption.decryptText(settings.store.secretKey, message.content);
                     handleDecrypt(message.id, dec);
                 }
             };
         });
 
         this.preSend = addPreSendListener(async (_, message) => {
+            if (!settings.store.secretKey) return;
             if (!settings.store.autoEncrypt) return;
             if (!message.content) return;
 
-            const encrypted = await encrypt(message.content);
+            const encrypted = Encryption.encryptText(settings.store.secretKey, message.content);
             if (!encrypted) return;
 
             message.content = encrypted;
