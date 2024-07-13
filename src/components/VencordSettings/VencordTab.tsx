@@ -129,7 +129,7 @@ function VencordSettings() {
                     <QuickAction
                         Icon={GithubIcon}
                         text="View Source Code"
-                        action={() => VencordNative.native.openExternal("https://github.com/" + gitRemote)}
+                        action={() => VencordNative.native.openExternal("https://git.kty.lol/" + gitRemote)}
                     />
                 </QuickActionCard>
             </Forms.FormSection>
