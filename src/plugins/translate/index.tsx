@@ -77,8 +77,11 @@ export default definePlugin({
                 message,
                 channel: ChannelStore.getChannel(message.channel_id),
                 onClick: async () => {
+                    console.log("clicked");
                     const trans = await translate("received", message.content);
+                    console.log(trans.text);
                     handleTranslate(message.id, trans);
+                    console.log("done");
                 }
             };
         });
