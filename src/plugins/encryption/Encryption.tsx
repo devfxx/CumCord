@@ -37,7 +37,7 @@ export const KeyChatBarIcon: ChatBarButton = ({ isMainChat }) => {
                         You just enabled auto encryption (by right clicking the Key icon). Any message you send will automatically be encrypted before being sent.
                     </Forms.FormText>
                     <Forms.FormText className={Margins.top16}>
-                        If this was an accident, disable it again, or it will change your message content before sending.
+                        Remember to keep your secret key safe, as you will need it to decrypt messages.
                     </Forms.FormText>
                 </>,
                 cancelText: "Disable Auto-Encryption",

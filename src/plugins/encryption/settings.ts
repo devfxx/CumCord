@@ -11,6 +11,11 @@ export const settings = definePluginSettings({
         type: OptionType.BOOLEAN,
         description: "Show encryption button in chat bar",
         default: true
+    },
+    secretKey: {
+        type: OptionType.STRING,
+        description: "The secret to use for encryption/decryption",
+        default: ""
     }
 }).withPrivateSettings<{
     showAutoEncryptionAlert: boolean;

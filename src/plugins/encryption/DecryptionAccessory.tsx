@@ -2,12 +2,11 @@ import { Parser, useEffect, useState } from "@webpack/common";
 import { Message } from "discord-types/general";
 
 import { KeyIcon } from "./Encryption";
-import { cl, DecryptionValue } from "./utils";
-import { Devs } from "@utils/constants";
+import { cl } from "./utils";
 
-const DecryptionSetters = new Map<string, (v: DecryptionValue) => void>();
+const DecryptionSetters = new Map<string, (v: string) => void>();
 
-export function handleDecrypt(messageId: string, data: DecryptionValue) {
+export function handleDecrypt(messageId: string, data: string) {
     DecryptionSetters.get(messageId)!(data);
 }
 
@@ -23,7 +22,7 @@ function Dismiss({ onDismiss }: { onDismiss: () => void; }) {
 }
 
 export function DecryptionAccessory({ message }: { message: Message; }) {
-    const [decrypted, setDecrypted] = useState<DecryptionValue>();
+    const [decrypted, setDecrypted] = useState<string>();
 
     useEffect(() => {
         // Ignore MessageLinkEmbeds messages
@@ -39,7 +38,7 @@ export function DecryptionAccessory({ message }: { message: Message; }) {
     return (
         <span className={cl("accessory")}>
             <KeyIcon width={16} height={16} />
-            {Parser.parse(decrypted.text)}
+            {Parser.parse(decrypted)}
             {" "}
             <Dismiss onDismiss={() => setDecrypted(undefined)} />
         </span>

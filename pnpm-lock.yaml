@@ -17,6 +17,9 @@ importers:
       '@vap/shiki':
         specifier: 0.10.5
         version: 0.10.5
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
       eslint-plugin-simple-header:
         specifier: ^1.0.2
         version: 1.1.1
@@ -39,6 +42,9 @@ importers:
       '@types/chrome':
         specifier: ^0.0.246
         version: 0.0.246
+      '@types/crypto-js':
+        specifier: ^4.2.2
+        version: 4.2.2
       '@types/diff':
         specifier: ^5.0.3
         version: 5.2.1
@@ -387,6 +393,9 @@ packages:
 
   '@types/chrome@0.0.246':
     resolution: {integrity: sha512-MxGxEomGxsJiL9xe/7ZwVgwdn8XVKWbPvxpVQl3nWOjrS0Ce63JsfzxUc4aU3GvRcUPYsfufHmJ17BFyKxeA4g==}
+
+  '@types/crypto-js@4.2.2':
+    resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
 
   '@types/diff@5.2.1':
     resolution: {integrity: sha512-uxpcuwWJGhe2AR1g8hD9F5OYGCqjqWnBUQFD8gMZsDbv8oPHzxJF6iMO6n8Tk0AdzlxoaaoQhOYlIg/PukVU8g==}
@@ -740,6 +749,9 @@ packages:
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
+
+  crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
 
   css-functions-list@3.2.2:
     resolution: {integrity: sha512-c+N0v6wbKVxTu5gOBBFkr9BEdBWaqqjQeiJ8QvSRIJOf+UxlJh930m8e6/WNeODIK0mYLFkoONrnj16i2EcvfQ==}
@@ -2606,6 +2618,8 @@ snapshots:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.15
 
+  '@types/crypto-js@4.2.2': {}
+
   '@types/diff@5.2.1': {}
 
   '@types/filesystem@0.0.36':
@@ -3021,6 +3035,8 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  crypto-js@4.2.0: {}
 
   css-functions-list@3.2.2: {}
 
