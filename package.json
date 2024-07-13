@@ -1,36 +1,36 @@
 {
-    "name": "vencord",
+    "name": "cumcord",
     "private": "true",
     "version": "1.9.4",
-    "description": "The cutest Discord client mod",
-    "homepage": "https://git.kty.lol/fxx/CumCord#readme",
+    "description": "SecFork",
+    "homepage": "https://github.com/devfxx/CumCord#readme",
     "bugs": {
-        "url": "https://git.kty.lol/fxx/CumCord/issues"
+        "url": "https://github.com/devfxx/CumCord/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://git.kty.lol/fxx/CumCord.git"
+        "url": "git+https://github.com/devfxx/CumCord.git"
     },
     "license": "GPL-3.0-or-later",
-    "author": "Vendicated",
+    "author": "devfxx",
     "scripts": {
         "build": "node --require=./scripts/suppressExperimentalWarnings.js scripts/build/build.mjs",
-        "buildStandalone": "bun run build --standalone",
+        "buildStandalone": "pnpm build --standalone",
         "buildWeb": "node --require=./scripts/suppressExperimentalWarnings.js scripts/build/buildWeb.mjs",
-        "buildWebStandalone": "bun run buildWeb --standalone",
-        "buildReporter": "bun run buildWebStandalone --reporter --skip-extension",
-        "buildReporterDesktop": "bun run build --reporter",
-        "watch": "bun run build --watch",
-        "watchWeb": "bun run buildWeb --watch",
+        "buildWebStandalone": "pnpm buildWeb --standalone",
+        "buildReporter": "pnpm buildWebStandalone --reporter --skip-extension",
+        "buildReporterDesktop": "pnpm build --reporter",
+        "watch": "pnpm build --watch",
+        "watchWeb": "pnpm buildWeb --watch",
         "generatePluginJson": "tsx scripts/generatePluginList.ts",
         "generateTypes": "tspc --emitDeclarationOnly --declaration --outDir packages/vencord-types",
         "inject": "node scripts/runInstaller.mjs",
         "uninject": "node scripts/runInstaller.mjs",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-pattern src/userplugins",
         "lint-styles": "stylelint \"src/**/*.css\" --ignore-pattern src/userplugins",
-        "lint:fix": "bun run lint --fix",
-        "test": "bun run buildStandalone && bun run lint && bun run lint-styles && bun run testTsc && bun run generatePluginJson",
-        "testWeb": "bun run lint && bun run buildWeb && bun run testTsc",
+        "lint:fix": "pnpm lint --fix",
+        "test": "pnpm buildStandalone && pnpm lint && pnpm lint-styles && pnpm testTsc && pnpm generatePluginJson",
+        "testWeb": "pnpm lint && pnpm buildWeb && pnpm testTsc",
         "testTsc": "tsc --noEmit"
     },
     "dependencies": {
@@ -76,7 +76,25 @@
         "typescript-transform-paths": "^3.4.7",
         "zip-local": "^0.3.5"
     },
-    "packageManager": "bun@1.1.18",
+    "packageManager": "pnpm@9.1.0",
+    "pnpm": {
+        "patchedDependencies": {
+            "eslint-plugin-path-alias@1.0.0": "patches/eslint-plugin-path-alias@1.0.0.patch",
+            "eslint@8.46.0": "patches/eslint@8.46.0.patch"
+        },
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "eslint-plugin-import",
+                "eslint"
+            ]
+        },
+        "allowedDeprecatedVersions": {
+            "source-map-resolve": "*",
+            "resolve-url": "*",
+            "source-map-url": "*",
+            "urix": "*"
+        }
+    },
     "webExt": {
         "artifactsDir": "./dist",
         "build": {
@@ -85,6 +103,7 @@
         "sourceDir": "./dist/firefox-unpacked"
     },
     "engines": {
-        "node": ">=18"
+        "node": ">=18",
+        "pnpm": ">=9"
     }
 }
