@@ -1,18 +1,18 @@
 {
-    "name": "vencord",
+    "name": "cumcord",
     "private": "true",
     "version": "1.9.5",
     "description": "The cutest Discord client mod",
     "homepage": "https://git.kty.lol/fxx/CumCord#readme",
     "bugs": {
-        "url": "https://git.kty.lol/fxx/CumCord/issues"
+        "url": "https://github.com/devfxx/CumCord/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://git.kty.lol/fxx/CumCord.git"
+        "url": "git+https://github.com/devfxx/CumCord.git"
     },
     "license": "GPL-3.0-or-later",
-    "author": "Vendicated",
+    "author": "devfxx",
     "scripts": {
         "build": "node --require=./scripts/suppressExperimentalWarnings.js scripts/build/build.mjs",
         "buildStandalone": "pnpm build --standalone",
