@@ -27,6 +27,7 @@ const TranslationSetters = new Map<string, (v: TranslationValue) => void>();
 
 export function handleTranslate(messageId: string, data: TranslationValue) {
     TranslationSetters.get(messageId)!(data);
+    console.log(data);
 }
 
 function Dismiss({ onDismiss }: { onDismiss: () => void; }) {
@@ -48,6 +49,7 @@ export function TranslationAccessory({ message }: { message: Message; }) {
         if ((message as any).vencordEmbeddedBy) return;
 
         TranslationSetters.set(message.id, setTranslation);
+        console.log(message.id);
 
         return () => void TranslationSetters.delete(message.id);
     }, []);
