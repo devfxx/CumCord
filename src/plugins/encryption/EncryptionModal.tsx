@@ -19,7 +19,6 @@ function EncryptionToggle() {
     );
 }
 
-
 export function EncryptionModal({ rootProps }: { rootProps: ModalProps; }) {
     return (
         <ModalRoot {...rootProps}>
