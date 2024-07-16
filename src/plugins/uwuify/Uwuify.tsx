@@ -50,7 +50,7 @@ export const KittyChatBarIcon: ChatBarButton = ({ isMainChat }) => {
 
     return (
         <ChatBarButton
-            tooltip="Open UwUify Modal"
+            tooltip="UwUify"
             onClick={e => {
                 if (e.shiftKey) return toggle();
 
