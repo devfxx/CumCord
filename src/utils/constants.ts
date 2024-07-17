@@ -26,6 +26,17 @@ export interface Dev {
     badge?: boolean;
 }
 
+export const CumDevs = /* #__PURE__*/ Object.freeze({
+    Nobody: {
+        name: "Nobody",
+        id: 0n,
+    },
+    Fxx: {
+        name: "fxx",
+        id: 423452508372074506n
+    },
+} satisfies Record<string, Dev>);
+
 /**
  * If you made a plugin or substantial contribution, add yourself here.
  * This object is used for the plugin author list, as well as to add a contributor badge to your profile.
@@ -36,10 +47,6 @@ export const Devs = /* #__PURE__*/ Object.freeze({
     Nobody: {
         name: "Nobody",
         id: 0n,
-    },
-    Fxx: {
-        name: "fxx",
-        id: 423452508372074506n
     },
     Ven: {
         name: "Vee",
@@ -544,6 +551,14 @@ export const Devs = /* #__PURE__*/ Object.freeze({
 export const DevsById = /* #__PURE__*/ (() =>
     Object.freeze(Object.fromEntries(
         Object.entries(Devs)
+            .filter(d => d[1].id !== 0n)
+            .map(([_, v]) => [v.id, v] as const)
+    ))
+)() as Record<string, Dev>;
+
+export const CumDevsById = /* #__PURE__*/ (() =>
+    Object.freeze(Object.fromEntries(
+        Object.entries(CumDevs)
             .filter(d => d[1].id !== 0n)
             .map(([_, v]) => [v.id, v] as const)
     ))
