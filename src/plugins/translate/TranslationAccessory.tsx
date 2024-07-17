@@ -27,7 +27,6 @@ const TranslationSetters = new Map<string, (v: TranslationValue) => void>();
 
 export function handleTranslate(messageId: string, data: TranslationValue) {
     TranslationSetters.get(messageId)!(data);
-    console.log(data);
 }
 
 function Dismiss({ onDismiss }: { onDismiss: () => void; }) {
