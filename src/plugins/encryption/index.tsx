@@ -4,7 +4,7 @@ import { addChatBarButton, removeChatBarButton } from "@api/ChatButtons";
 import { addAccessory, removeAccessory } from "@api/MessageAccessories";
 import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
 import { addButton, removeButton } from "@api/MessagePopover";
-import { Devs } from "@utils/constants";
+import { CumDevs } from "@utils/constants";
 import { ChannelStore } from "@webpack/common";
 import { DecryptionAccessory, handleDecrypt } from "./DecryptionAccessory";
 import { KeyChatBarIcon, KeyIcon } from "./Encryption";
@@ -16,7 +16,7 @@ import definePlugin from "@utils/types";
 export default definePlugin({
     name: "Encryption",
     description: "Shitty message encryption plugin",
-    authors: [Devs.Fxx],
+    authors: [CumDevs.Fxx],
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
 
