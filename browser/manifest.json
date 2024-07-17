@@ -1,9 +1,9 @@
 {
     "manifest_version": 3,
     "minimum_chrome_version": "111",
-    "name": "Vencord Web",
-    "description": "The cutest Discord mod now in your browser",
-    "author": "Vendicated",
+    "name": "CumCord Web",
+    "description": "CumCord, in your browser",
+    "author": "devfxx",
     "homepage_url": "https://git.kty.lol/fxx/CumCord",
     "icons": {
         "128": "icon.png"
