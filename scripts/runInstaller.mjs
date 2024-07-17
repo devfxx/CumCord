@@ -32,7 +32,7 @@ import { finished } from "stream/promises";
 import { fileURLToPath } from "url";
 
 const BASE_URL =
-    "https://github.com/Vencord/Installer/releases/latest/download/";
+    "https://github.com/devfxx/CumInstaller/releases/latest/download/";
 const INSTALLER_PATH_DARWIN =
     "VencordInstaller.app/Contents/MacOS/VencordInstaller";
 
@@ -43,11 +43,11 @@ const ETAG_FILE = join(FILE_DIR, "etag.txt");
 function getFilename() {
     switch (process.platform) {
         case "win32":
-            return "VencordInstallerCli.exe";
+            return "CumInstallerCli.exe";
         case "darwin":
-            return "VencordInstaller.MacOS.zip";
+            return "CumInstaller.MacOS.zip";
         case "linux":
-            return "VencordInstallerCli-linux";
+            return "CumInstallerCli-linux";
         default:
             throw new Error("Unsupported platform: " + process.platform);
     }
