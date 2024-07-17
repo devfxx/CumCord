@@ -49,7 +49,6 @@ export function TranslationAccessory({ message }: { message: Message; }) {
         if ((message as any).vencordEmbeddedBy) return;
 
         TranslationSetters.set(message.id, setTranslation);
-        console.log(message.id);
 
         return () => void TranslationSetters.delete(message.id);
     }, []);
