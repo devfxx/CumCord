@@ -44,6 +44,7 @@ interface PluginData {
 }
 
 const devs = {} as Record<string, Dev>;
+const cumDevs = {} as Record<string, Dev>;
 
 function getName(node: NamedDeclaration) {
     return node.name && isIdentifier(node.name) ? node.name.text : undefined;
@@ -66,19 +67,35 @@ function parseDevs() {
         if (!isVariableStatement(child)) continue;
 
         const devsDeclaration = child.declarationList.declarations.find(d => hasName(d, "Devs"));
+        const cumDevsDeclaration = child.declarationList.declarations.find(d => hasName(d, "CumDevs"));
         if (!devsDeclaration?.initializer || !isCallExpression(devsDeclaration.initializer)) continue;
+        if (!cumDevsDeclaration?.initializer || !isCallExpression(cumDevsDeclaration.initializer)) continue;
 
-        const value = devsDeclaration.initializer.arguments[0];
+        const value1 = devsDeclaration.initializer.arguments[0];
+        const value2 = cumDevsDeclaration.initializer.arguments[0];
 
-        if (!isSatisfiesExpression(value) || !isObjectLiteralExpression(value.expression)) throw new Error("Failed to parse devs: not an object literal");
+        if (!isSatisfiesExpression(value1) || !isObjectLiteralExpression(value1.expression)) throw new Error("Failed to parse devs: not an object literal");
+        if (!isSatisfiesExpression(value2) || !isObjectLiteralExpression(value2.expression)) throw new Error("Failed to parse cumDevs: not an object literal");
 
-        for (const prop of value.expression.properties) {
+        for (const prop of value1.expression.properties) {
             const name = (prop.name as Identifier).text;
             const value = isPropertyAssignment(prop) ? prop.initializer : prop;
 
             if (!isObjectLiteralExpression(value)) throw new Error(`Failed to parse devs: ${name} is not an object literal`);
 
             devs[name] = {
+                name: (getObjectProp(value, "name") as StringLiteral).text,
+                id: (getObjectProp(value, "id") as BigIntLiteral).text.slice(0, -1)
+            };
+        }
+
+        for (const prop of value2.expression.properties) {
+            const name = (prop.name as Identifier).text;
+            const value = isPropertyAssignment(prop) ? prop.initializer : prop;
+
+            if (!isObjectLiteralExpression(value)) throw new Error(`Failed to parse cumDevs: ${name} is not an object literal`);
+
+            cumDevs[name] = {
                 name: (getObjectProp(value, "name") as StringLiteral).text,
                 id: (getObjectProp(value, "id") as BigIntLiteral).text.slice(0, -1)
             };
@@ -134,7 +151,7 @@ async function parseFile(fileName: string) {
                     if (!isArrayLiteralExpression(value)) throw fail("authors is not an array literal");
                     data.authors = value.elements.map(e => {
                         if (!isPropertyAccessExpression(e)) throw fail("authors array contains non-property access expressions");
-                        const d = devs[getName(e)!];
+                        const d = { ...devs, ...cumDevs }[getName(e)!];
                         if (!d) throw fail(`couldn't look up author ${getName(e)}`);
                         return d;
                     });

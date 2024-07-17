@@ -10,11 +10,11 @@ import { useSettings } from "@api/Settings";
 import { classNameFactory } from "@api/Styles";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { Link } from "@components/Link";
-import { DevsById } from "@utils/constants";
+import { CumDevsById, DevsById } from "@utils/constants";
 import { fetchUserProfile } from "@utils/discord";
 import { classes, pluralise } from "@utils/misc";
 import { ModalContent, ModalRoot, openModal } from "@utils/modal";
-import { Forms, showToast, useEffect, useMemo, UserProfileStore, useStateFromStores } from "@webpack/common";
+import { Forms, UserProfileStore, showToast, useEffect, useMemo, useStateFromStores } from "@webpack/common";
 import { User } from "discord-types/general";
 
 import Plugins from "~plugins";
@@ -51,11 +51,19 @@ function ContributorModal({ user }: { user: User; }) {
 
     const plugins = useMemo(() => {
         const allPlugins = Object.values(Plugins);
-        const pluginsByAuthor = DevsById[user.id]
+        const first_pluginsByAuthor = DevsById[user.id]
             ? allPlugins.filter(p => p.authors.includes(DevsById[user.id]))
             : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
 
-        return pluginsByAuthor
+        const second_pluginsByAuthor = CumDevsById[user.id]
+            ? allPlugins.filter(p => p.authors.includes(CumDevsById[user.id]))
+            : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
+
+        // return pluginsByAuthor
+        //     .filter(p => !p.name.endsWith("API"))
+        //     .sort((a, b) => Number(a.required ?? false) - Number(b.required ?? false));
+
+        return [...first_pluginsByAuthor, ...second_pluginsByAuthor]
             .filter(p => !p.name.endsWith("API"))
             .sort((a, b) => Number(a.required ?? false) - Number(b.required ?? false));
     }, [user.id, user.username]);
