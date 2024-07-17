@@ -10,8 +10,6 @@ on:
             - scripts/build/**
             - package.json
             - pnpm-lock.yaml
-
-on:
     workflow_dispatch:
 
 env:
