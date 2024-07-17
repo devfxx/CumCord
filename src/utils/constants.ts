@@ -26,6 +26,10 @@ export interface Dev {
     badge?: boolean;
 }
 
+/**
+ * This is for CumCord developers.
+ * I decided to keep this separate from the main Devs object, as CumCord developers are not necessarily Vencord developers.
+*/
 export const CumDevs = /* #__PURE__*/ Object.freeze({
     Nobody: {
         name: "Nobody",
@@ -46,7 +50,7 @@ export const CumDevs = /* #__PURE__*/ Object.freeze({
 export const Devs = /* #__PURE__*/ Object.freeze({
     Nobody: {
         name: "Nobody",
-        id: 0n,
+        id: 0n
     },
     Ven: {
         name: "Vee",
