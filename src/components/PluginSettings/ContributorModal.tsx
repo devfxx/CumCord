@@ -20,6 +20,7 @@ import Plugins from "~plugins";
 
 import { PluginCard } from ".";
 import { GithubButton, WebsiteButton } from "./LinkIconButton";
+import { CumDevsById, DevsById } from "@utils/constants";
 
 const cl = classNameFactory("vc-author-modal-");
 
@@ -48,17 +49,13 @@ function ContributorModal({ user }: { user: User; }) {
     const githubName = profile?.connectedAccounts?.find(a => a.type === "github")?.name;
     const website = profile?.connectedAccounts?.find(a => a.type === "domain")?.name;
 
-    // works
     const plugins = useMemo(() => {
         const allPlugins = Object.values(Plugins);
 
-        // This is pure stupidity
-        // const author = { ...DevsById[user.id], ...CumDevsById[user.id] };
-        // const pluginsByAuthor = author
-        //     ? allPlugins.filter(p => p.authors.includes(author))
-        //     : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
-
-        const pluginsByAuthor = allPlugins.filter(p => p.authors.some(a => a.name === user.username || a.id.toString() === user.id)); // Workaround for now
+        const author = DevsById[user.id] ?? CumDevsById[user.id];
+        const pluginsByAuthor = author
+            ? allPlugins.filter(p => p.authors.includes(author))
+            : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
 
         return pluginsByAuthor
             .filter(p => !p.name.endsWith("API"))
