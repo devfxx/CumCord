@@ -11,7 +11,8 @@ on:
             - package.json
             - pnpm-lock.yaml
 
-on: workflow_dispatch
+on:
+    workflow_dispatch:
 
 env:
     FORCE_COLOR: true
