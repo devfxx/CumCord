@@ -10,7 +10,6 @@ import { useSettings } from "@api/Settings";
 import { classNameFactory } from "@api/Styles";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { Link } from "@components/Link";
-import { CumDevsById, DevsById } from "@utils/constants";
 import { fetchUserProfile } from "@utils/discord";
 import { classes, pluralise } from "@utils/misc";
 import { ModalContent, ModalRoot, openModal } from "@utils/modal";
@@ -49,21 +48,21 @@ function ContributorModal({ user }: { user: User; }) {
     const githubName = profile?.connectedAccounts?.find(a => a.type === "github")?.name;
     const website = profile?.connectedAccounts?.find(a => a.type === "domain")?.name;
 
+    // works
     const plugins = useMemo(() => {
         const allPlugins = Object.values(Plugins);
-        const first_pluginsByAuthor = DevsById[user.id]
-            ? allPlugins.filter(p => p.authors.includes(DevsById[user.id]))
-            : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
 
-        const second_pluginsByAuthor = CumDevsById[user.id]
-            ? allPlugins.filter(p => p.authors.includes(CumDevsById[user.id]))
-            : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
+        // This is pure stupidity
+        // const author = { ...DevsById[user.id], ...CumDevsById[user.id] };
+        // const pluginsByAuthor = author
+        //     ? allPlugins.filter(p => p.authors.includes(author))
+        //     : allPlugins.filter(p => p.authors.some(a => a.name === user.username));
 
-        // return pluginsByAuthor
-        //     .filter(p => !p.name.endsWith("API"))
-        //     .sort((a, b) => Number(a.required ?? false) - Number(b.required ?? false));
+        const pluginsByAuthor = allPlugins.filter(p => p.authors.some(a => a.name === user.username || a.id.toString() === user.id)); // Workaround for now
 
-        return [...first_pluginsByAuthor, ...second_pluginsByAuthor]
+        console.log(pluginsByAuthor);
+
+        return pluginsByAuthor
             .filter(p => !p.name.endsWith("API"))
             .sort((a, b) => Number(a.required ?? false) - Number(b.required ?? false));
     }, [user.id, user.username]);
