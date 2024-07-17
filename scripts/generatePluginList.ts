@@ -67,17 +67,13 @@ function parseDevs() {
         if (!isVariableStatement(child)) continue;
 
         const devsDeclaration = child.declarationList.declarations.find(d => hasName(d, "Devs"));
-        const cumDevsDeclaration = child.declarationList.declarations.find(d => hasName(d, "CumDevs"));
         if (!devsDeclaration?.initializer || !isCallExpression(devsDeclaration.initializer)) continue;
-        if (!cumDevsDeclaration?.initializer || !isCallExpression(cumDevsDeclaration.initializer)) continue;
 
-        const value1 = devsDeclaration.initializer.arguments[0];
-        const value2 = cumDevsDeclaration.initializer.arguments[0];
+        const value = devsDeclaration.initializer.arguments[0];
 
-        if (!isSatisfiesExpression(value1) || !isObjectLiteralExpression(value1.expression)) throw new Error("Failed to parse devs: not an object literal");
-        if (!isSatisfiesExpression(value2) || !isObjectLiteralExpression(value2.expression)) throw new Error("Failed to parse cumDevs: not an object literal");
+        if (!isSatisfiesExpression(value) || !isObjectLiteralExpression(value.expression)) throw new Error("Failed to parse devs: not an object literal");
 
-        for (const prop of value1.expression.properties) {
+        for (const prop of value.expression.properties) {
             const name = (prop.name as Identifier).text;
             const value = isPropertyAssignment(prop) ? prop.initializer : prop;
 
@@ -89,7 +85,26 @@ function parseDevs() {
             };
         }
 
-        for (const prop of value2.expression.properties) {
+        return;
+    }
+
+    throw new Error("Could not find Devs constant");
+}
+
+function parseCumDevs() {
+    const file = createSourceFile("constants.ts", readFileSync("src/utils/constants.ts", "utf8"), ScriptTarget.Latest);
+
+    for (const child of file.getChildAt(0).getChildren()) {
+        if (!isVariableStatement(child)) continue;
+
+        const cumDevsDeclaration = child.declarationList.declarations.find(d => hasName(d, "CumDevs"));
+        if (!cumDevsDeclaration?.initializer || !isCallExpression(cumDevsDeclaration.initializer)) continue;
+
+        const value = cumDevsDeclaration.initializer.arguments[0];
+
+        if (!isSatisfiesExpression(value) || !isObjectLiteralExpression(value.expression)) throw new Error("Failed to parse cumDevs: not an object literal");
+
+        for (const prop of value.expression.properties) {
             const name = (prop.name as Identifier).text;
             const value = isPropertyAssignment(prop) ? prop.initializer : prop;
 
@@ -104,7 +119,7 @@ function parseDevs() {
         return;
     }
 
-    throw new Error("Could not find Devs constant");
+    throw new Error("Could not find CumDevs constant");
 }
 
 async function parseFile(fileName: string) {
@@ -222,6 +237,7 @@ function isPluginFile({ name }: { name: string; }) {
 
 (async () => {
     parseDevs();
+    parseCumDevs();
 
     const plugins = [] as PluginData[];
     const readmes = {} as Record<string, string>;
