@@ -60,8 +60,6 @@ function ContributorModal({ user }: { user: User; }) {
 
         const pluginsByAuthor = allPlugins.filter(p => p.authors.some(a => a.name === user.username || a.id.toString() === user.id)); // Workaround for now
 
-        console.log(pluginsByAuthor);
-
         return pluginsByAuthor
             .filter(p => !p.name.endsWith("API"))
             .sort((a, b) => Number(a.required ?? false) - Number(b.required ?? false));
