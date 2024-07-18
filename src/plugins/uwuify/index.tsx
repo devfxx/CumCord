@@ -16,9 +16,6 @@ export default definePlugin({
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
 
-    // export cuz we're cool
-    uwuify,
-
     start() {
         addChatBarButton("vc-uwuify", KittyChatBarIcon);
 
