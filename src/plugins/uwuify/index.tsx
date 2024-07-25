@@ -1,3 +1,9 @@
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2024 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 import "./styles.css";
 
 import { addChatBarButton, removeChatBarButton } from "@api/ChatButtons";
@@ -5,9 +11,9 @@ import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
 import { CumDevs } from "@utils/constants";
 import definePlugin from "@utils/types";
 
-import { KittyChatBarIcon } from "./Uwuify";
 import { settings } from "./settings";
 import { uwuify } from "./utils";
+import { KittyChatBarIcon } from "./Uwuify";
 
 export default definePlugin({
     name: "UwUify",
