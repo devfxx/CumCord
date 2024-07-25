@@ -1,3 +1,9 @@
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2024 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 import "./styles.css";
 
 import { addChatBarButton, removeChatBarButton } from "@api/ChatButtons";
@@ -5,13 +11,13 @@ import { addAccessory, removeAccessory } from "@api/MessageAccessories";
 import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
 import { addButton, removeButton } from "@api/MessagePopover";
 import { CumDevs } from "@utils/constants";
+import definePlugin from "@utils/types";
 import { ChannelStore } from "@webpack/common";
+
 import { DecryptionAccessory, handleDecrypt } from "./DecryptionAccessory";
 import { KeyChatBarIcon, KeyIcon } from "./Encryption";
 import { settings } from "./settings";
 import { Encryption } from "./utils";
-
-import definePlugin from "@utils/types";
 
 export default definePlugin({
     name: "Encryption",
