@@ -23,7 +23,7 @@ Fork of Vencord, with some custom plugins.
 
 Visit https://github.com/devfxx/CumInstaller/releases/latest
 
-## Sponsors
+## Sponsors of Vencord
 
 |     **Thanks a lot to all Vencord [sponsors](https://github.com/sponsors/Vendicated)!!**     |
 | :------------------------------------------------------------------------------------------: |
