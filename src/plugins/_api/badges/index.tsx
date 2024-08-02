@@ -34,6 +34,7 @@ import { Forms, Toasts, UserStore } from "@webpack/common";
 import { User } from "discord-types/general";
 
 const CONTRIBUTOR_BADGE = "https://vencord.dev/assets/favicon.png";
+const CUM_CONTRIBUTOR_BADGE = "https://cdn.kty.lol/icons/cumcord.png";
 
 const ContributorBadge: ProfileBadge = {
     description: "Vencord Contributor",
@@ -45,7 +46,7 @@ const ContributorBadge: ProfileBadge = {
 
 const CumContributorBadge: ProfileBadge = {
     description: "CumCord Contributor",
-    image: CONTRIBUTOR_BADGE,
+    image: CUM_CONTRIBUTOR_BADGE,
     position: BadgePosition.START,
     shouldShow: ({ userId }) => isCumPluginDev(userId),
     onClick: (_, { userId }) => openContributorModal(UserStore.getUser(userId))
