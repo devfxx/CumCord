@@ -3,8 +3,8 @@
 import { ModalCloseButton, ModalContent, ModalHeader, ModalProps, ModalRoot } from "@utils/modal";
 import { Forms, Switch } from "@webpack/common";
 
+import { cl } from ".";
 import { settings } from "./settings";
-import { cl } from "./utils";
 
 function EncryptionToggle() {
     const value = settings.use(["autoEncrypt"]).autoEncrypt;

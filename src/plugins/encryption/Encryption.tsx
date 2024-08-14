@@ -6,9 +6,9 @@ import { classes } from "@utils/misc";
 import { openModal } from "@utils/modal";
 import { Alerts, Forms } from "@webpack/common";
 
+import { cl } from ".";
 import { EncryptionModal } from "./EncryptionModal";
 import { settings } from "./settings";
-import { cl } from "./utils";
 
 export function KeyIcon({ height = 24, width = 24, className }: { height?: number; width?: number; className?: string; }) {
     return (

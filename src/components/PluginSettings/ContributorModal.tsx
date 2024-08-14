@@ -10,17 +10,17 @@ import { useSettings } from "@api/Settings";
 import { classNameFactory } from "@api/Styles";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { Link } from "@components/Link";
+import { CumDevsById, DevsById } from "@utils/constants";
 import { fetchUserProfile } from "@utils/discord";
 import { classes, pluralise } from "@utils/misc";
 import { ModalContent, ModalRoot, openModal } from "@utils/modal";
-import { Forms, UserProfileStore, showToast, useEffect, useMemo, useStateFromStores } from "@webpack/common";
+import { Forms, showToast, useEffect, useMemo, UserProfileStore, useStateFromStores } from "@webpack/common";
 import { User } from "discord-types/general";
 
 import Plugins from "~plugins";
 
 import { PluginCard } from ".";
 import { GithubButton, WebsiteButton } from "./LinkIconButton";
-import { CumDevsById, DevsById } from "@utils/constants";
 
 const cl = classNameFactory("vc-author-modal-");
 
