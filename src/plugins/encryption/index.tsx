@@ -6,7 +6,6 @@ import { addChatBarButton, removeChatBarButton } from "@api/ChatButtons";
 import { addAccessory, removeAccessory } from "@api/MessageAccessories";
 import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
 import { addButton, removeButton } from "@api/MessagePopover";
-import { classNameFactory } from "@api/Styles";
 import { CumDevs } from "@utils/constants";
 import definePlugin, { type PluginNative } from "@utils/types";
 import { ChannelStore } from "@webpack/common";
@@ -16,8 +15,6 @@ import { KeyChatBarIcon, KeyIcon } from "./Encryption";
 import { settings } from "./settings";
 
 const Native = VencordNative.pluginHelpers.encryption as PluginNative<typeof import("./native")>;
-
-export const cl = classNameFactory("vc-encryption-");
 
 export default definePlugin({
     name: "Encryption",

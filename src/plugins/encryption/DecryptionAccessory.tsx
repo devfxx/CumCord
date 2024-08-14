@@ -3,8 +3,8 @@
 import { Parser, useEffect, useState } from "@webpack/common";
 import { Message } from "discord-types/general";
 
-import { cl } from ".";
 import { KeyIcon } from "./Encryption";
+import { cl } from "./utils";
 
 const DecryptionSetters = new Map<string, (v: string) => void>();
 

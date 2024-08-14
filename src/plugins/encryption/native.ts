@@ -4,7 +4,6 @@ import crypto from "node:crypto";
 
 import { type IpcMainInvokeEvent } from "electron";
 
-
 export const encryptText = (_: IpcMainInvokeEvent, secret: string, text: string): string => {
     const cipher = crypto.createCipheriv("aes-256-cbc", secret, Buffer.alloc(16, 0));
     let encryptedText = cipher.update(text, "utf8", "hex");
