@@ -1,6 +1,6 @@
 # CumCord (fork of Vencord)
 
-Fork of Vencord, with some custom plugins.
+Fork of [Vencord](https://github.com/Vendicated/Vencord), with some custom plugins.
 
 | ![image](https://github.com/Vendicated/Vencord/assets/45497981/706722b1-32de-4d99-bee9-93993b504334) |
 | :--------------------------------------------------------------------------------------------------: |
