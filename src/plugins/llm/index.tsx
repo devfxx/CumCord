@@ -18,7 +18,7 @@ import { Respond, Rewrite } from "./utils";
 
 export default definePlugin({
     name: "LLM",
-    description: "LLM",
+    description: "Use AI to respond to messages and rewrite messages when sending",
     authors: [CumDevs.Fxx],
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
