@@ -3,7 +3,7 @@
 import { Parser, useEffect, useState } from "@webpack/common";
 import { Message } from "discord-types/general";
 
-import { LLmIcon } from "./Summarize";
+import { LLmIcon } from "./LLM";
 import { cl } from "./utils";
 
 const ResponseSetters = new Map<string, (v: string) => void>();
@@ -23,7 +23,7 @@ function Dismiss({ onDismiss }: { onDismiss: () => void; }) {
     );
 }
 
-export function SummarizeAccessory({ message }: { message: Message; }) {
+export function LLMAccessory({ message }: { message: Message; }) {
     const [response, setResponse] = useState<string>();
 
     useEffect(() => {

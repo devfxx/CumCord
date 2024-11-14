@@ -6,33 +6,33 @@ import { Forms, Switch } from "@webpack/common";
 import { settings } from "./settings";
 import { cl } from "./utils";
 
-function EncryptionToggle() {
-    const value = settings.use(["autoSummarize"]).autoSummarize;
+function RewriteToggle() {
+    const value = settings.use(["autoRewrite"]).autoRewrite;
 
     return (
         <Switch
             value={value}
-            onChange={v => settings.store.autoSummarize = v}
-            note={settings.def.autoSummarize.description}
+            onChange={v => settings.store.autoRewrite = v}
+            note={settings.def.autoRewrite.description}
             hideBorder
         >
-            Summarize Messages
+            Rewrite Messages
         </Switch>
     );
 }
 
-export function SummarizeModal({ rootProps }: { rootProps: ModalProps; }) {
+export function LLMModal({ rootProps }: { rootProps: ModalProps; }) {
     return (
         <ModalRoot {...rootProps}>
             <ModalHeader className={cl("modal-header")}>
                 <Forms.FormTitle tag="h2">
-                    Summarize
+                    LLM
                 </Forms.FormTitle>
                 <ModalCloseButton onClick={rootProps.onClose} />
             </ModalHeader>
 
             <ModalContent className={cl("modal-content")}>
-                <EncryptionToggle />
+                <RewriteToggle />
             </ModalContent>
         </ModalRoot >
     );
