@@ -52,7 +52,7 @@ export const LLmChatBarIcon: ChatBarButton = ({ isMainChat }) => {
 
     return (
         <ChatBarButton
-            tooltip="Automatic LLM Response"
+            tooltip="Automatic LLM Rewriting"
             onClick={e => {
                 if (e.shiftKey) return toggle();
 
