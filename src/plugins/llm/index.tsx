@@ -16,8 +16,8 @@ import { handleResponse, SummarizeAccessory } from "./SummarizeAccessory";
 import { Summarize } from "./utils";
 
 export default definePlugin({
-    name: "Encryption",
-    description: "Shitty message encryption plugin",
+    name: "LLM",
+    description: "LLM",
     authors: [CumDevs.Fxx],
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
@@ -55,8 +55,8 @@ export default definePlugin({
 
     stop() {
         removePreSendListener(this.preSend);
-        removeChatBarButton("vc-encryption");
-        removeAccessory("vc-encryption");
-        removeButton("vc-decrypt");
+        removeChatBarButton("vc-llm");
+        removeAccessory("vc-llm");
+        removeButton("vc-llm");
     },
 });
