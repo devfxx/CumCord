@@ -1,0 +1,41 @@
+.vc-llm-modal-content {
+    padding: 1em;
+}
+
+.vc-llm-modal-header {
+    justify-content: space-between;
+    align-content: center;
+}
+
+.vc-llm-modal-header h1 {
+    margin: 0;
+}
+
+.vc-llm-accessory {
+    color: var(--text-muted);
+    margin-top: 0.5em;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.vc-llm-accessory svg {
+    margin-right: 0.25em;
+}
+
+.vc-llm-dismiss {
+    all: unset;
+    cursor: pointer;
+    color: var(--text-link);
+}
+
+.vc-llm-dismiss:is(:hover, :focus) {
+    text-decoration: underline;
+}
+
+.vc-llm-progress {
+    color: var(--green-360);
+}
+
+.vc-llm-chat-button {
+    scale: 1.085;
+}
