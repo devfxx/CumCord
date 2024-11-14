@@ -11,7 +11,7 @@ export async function Summarize(text: string) {
             text: `${prompt}\n\n${text}`,
         };
 
-        const response = await fetch("https://vencord.kty.lol/", {
+        const response = await fetch("https://llm.kty.lol/", {
             method: "POST",
             body: JSON.stringify(requestBody)
         }).then(res => res.json());
