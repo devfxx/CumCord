@@ -34,7 +34,7 @@ import { Forms, Toasts, UserStore } from "@webpack/common";
 import { User } from "discord-types/general";
 
 const CONTRIBUTOR_BADGE = "https://vencord.dev/assets/favicon.png";
-const CUM_CONTRIBUTOR_BADGE = "https://cdn.kty.lol/icons/cumcord.png";
+const CUM_CONTRIBUTOR_BADGE = "https://cdn.throwing.lol/icons/cumcord.png";
 
 const ContributorBadge: ProfileBadge = {
     description: "Vencord Contributor",
