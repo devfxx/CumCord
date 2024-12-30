@@ -233,9 +233,7 @@ export const gitRemotePlugin = {
                 });
                 remote = res.stdout
                     .trim()
-                    .replace("https://git.kty.lol/", "")
                     .replace("https://github.com/", "")
-                    .replace("git@git.kty.lol:", "")
                     .replace("git@github.com:", "")
                     .replace(/.git$/, "");
             }
@@ -361,11 +359,11 @@ export const stylePlugin = {
  */
 export const banImportPlugin = (filter, message) => ({
     name: "ban-imports",
-    setup: build => {
+    setup: (build) => {
         build.onResolve({ filter }, () => {
             return { errors: [{ text: message }] };
         });
-    }
+    },
 });
 
 /**
@@ -389,14 +387,26 @@ export const commonOpts = {
 };
 
 const escapedBuiltinModules = builtinModules
-    .map(m => m.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"))
+    .map((m) => m.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"))
     .join("|");
 const builtinModuleRegex = new RegExp(`^(node:)?(${escapedBuiltinModules})$`);
 
 export const commonRendererPlugins = [
-    banImportPlugin(builtinModuleRegex, "Cannot import node inbuilt modules in browser code. You need to use a native.ts file"),
-    banImportPlugin(/^react$/, "Cannot import from react. React and hooks should be imported from @webpack/common"),
-    banImportPlugin(/^electron(\/.*)?$/, "Cannot import electron in browser code. You need to use a native.ts file"),
-    banImportPlugin(/^ts-pattern$/, "Cannot import from ts-pattern. match and P should be imported from @webpack/common"),
-    ...commonOpts.plugins
+    banImportPlugin(
+        builtinModuleRegex,
+        "Cannot import node inbuilt modules in browser code. You need to use a native.ts file"
+    ),
+    banImportPlugin(
+        /^react$/,
+        "Cannot import from react. React and hooks should be imported from @webpack/common"
+    ),
+    banImportPlugin(
+        /^electron(\/.*)?$/,
+        "Cannot import electron in browser code. You need to use a native.ts file"
+    ),
+    banImportPlugin(
+        /^ts-pattern$/,
+        "Cannot import from ts-pattern. match and P should be imported from @webpack/common"
+    ),
+    ...commonOpts.plugins,
 ];
