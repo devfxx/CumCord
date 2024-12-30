@@ -33,8 +33,7 @@ import { fileURLToPath } from "url";
 
 const BASE_URL =
     "https://github.com/devfxx/CumInstaller/releases/latest/download/";
-const INSTALLER_PATH_DARWIN =
-    "VencordInstaller.app/Contents/MacOS/VencordInstaller";
+const INSTALLER_PATH_DARWIN = "CumInstaller.app/Contents/MacOS/CumInstaller";
 
 const BASE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILE_DIR = join(BASE_DIR, "dist", "Installer");
@@ -62,7 +61,7 @@ async function ensureBinary() {
     const downloadName = join(FILE_DIR, filename);
     const outputFile =
         process.platform === "darwin"
-            ? join(FILE_DIR, "VencordInstaller")
+            ? join(FILE_DIR, "CumInstaller")
             : downloadName;
 
     const etag =
@@ -72,7 +71,7 @@ async function ensureBinary() {
 
     const res = await fetch(BASE_URL + filename, {
         headers: {
-            "User-Agent": "Vencord (https://git.kty.lol/fxx/CumCord)",
+            "User-Agent": "Cumcord (https://github.com/devfxx/CumCord)",
             "If-None-Match": etag,
         },
     });
@@ -111,7 +110,7 @@ async function ensureBinary() {
             } catch {}
         };
         logAndRun(
-            `sudo spctl --add '${outputFile}' --label "Vencord Installer"`
+            `sudo spctl --add '${outputFile}' --label "Cumcord Installer"`
         );
         logAndRun(`sudo xattr -d com.apple.quarantine '${outputFile}'`);
     } else {
