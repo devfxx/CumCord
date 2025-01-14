@@ -14,7 +14,7 @@ import { KittyChatBarIcon } from "./Uwuify";
 export default definePlugin({
     name: "UwUify",
     description: "Reimplemented the UwUify plugin from Vencord (it got deleted)",
-    authors: [PwnDevs.Fxx],
+    authors: [PwnDevs.Proto],
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
 
