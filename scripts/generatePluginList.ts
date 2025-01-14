@@ -44,7 +44,7 @@ interface PluginData {
 }
 
 const devs = {} as Record<string, Dev>;
-const cumDevs = {} as Record<string, Dev>;
+const pwnDevs = {} as Record<string, Dev>;
 
 function getName(node: NamedDeclaration) {
     return node.name && isIdentifier(node.name) ? node.name.text : undefined;
@@ -91,16 +91,16 @@ function parseDevs() {
     throw new Error("Could not find Devs constant");
 }
 
-function parseCumDevs() {
+function parsePwnDevs() {
     const file = createSourceFile("constants.ts", readFileSync("src/utils/constants.ts", "utf8"), ScriptTarget.Latest);
 
     for (const child of file.getChildAt(0).getChildren()) {
         if (!isVariableStatement(child)) continue;
 
-        const cumDevsDeclaration = child.declarationList.declarations.find(d => hasName(d, "CumDevs"));
-        if (!cumDevsDeclaration?.initializer || !isCallExpression(cumDevsDeclaration.initializer)) continue;
+        const pwnDevsDeclaration = child.declarationList.declarations.find(d => hasName(d, "PwnDevs"));
+        if (!pwnDevsDeclaration?.initializer || !isCallExpression(pwnDevsDeclaration.initializer)) continue;
 
-        const value = cumDevsDeclaration.initializer.arguments[0];
+        const value = pwnDevsDeclaration.initializer.arguments[0];
 
         if (!isSatisfiesExpression(value) || !isObjectLiteralExpression(value.expression)) throw new Error("Failed to parse cumDevs: not an object literal");
 
@@ -108,9 +108,9 @@ function parseCumDevs() {
             const name = (prop.name as Identifier).text;
             const value = isPropertyAssignment(prop) ? prop.initializer : prop;
 
-            if (!isObjectLiteralExpression(value)) throw new Error(`Failed to parse cumDevs: ${name} is not an object literal`);
+            if (!isObjectLiteralExpression(value)) throw new Error(`Failed to parse pwnDevs: ${name} is not an object literal`);
 
-            cumDevs[name] = {
+            pwnDevs[name] = {
                 name: (getObjectProp(value, "name") as StringLiteral).text,
                 id: (getObjectProp(value, "id") as BigIntLiteral).text.slice(0, -1)
             };
@@ -119,7 +119,7 @@ function parseCumDevs() {
         return;
     }
 
-    throw new Error("Could not find CumDevs constant");
+    throw new Error("Could not find PwnDevs constant");
 }
 
 async function parseFile(fileName: string) {
@@ -166,7 +166,7 @@ async function parseFile(fileName: string) {
                     if (!isArrayLiteralExpression(value)) throw fail("authors is not an array literal");
                     data.authors = value.elements.map(e => {
                         if (!isPropertyAccessExpression(e)) throw fail("authors array contains non-property access expressions");
-                        const d = { ...devs, ...cumDevs }[getName(e)!];
+                        const d = { ...devs, ...pwnDevs }[getName(e)!];
                         if (!d) throw fail(`couldn't look up author ${getName(e)}`);
                         return d;
                     });
@@ -237,7 +237,7 @@ function isPluginFile({ name }: { name: string; }) {
 
 (async () => {
     parseDevs();
-    parseCumDevs();
+    parsePwnDevs();
 
     const plugins = [] as PluginData[];
     const readmes = {} as Record<string, string>;

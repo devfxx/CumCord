@@ -1,10 +1,10 @@
 {
     "manifest_version": 3,
     "minimum_chrome_version": "111",
-    "name": "CumCord Web",
-    "description": "CumCord, in your browser",
-    "author": "devfxx",
-    "homepage_url": "https://github.com/devfxx/CumCord",
+    "name": "PwnCord Web",
+    "description": "PwnCord, in your browser",
+    "author": "xlarp",
+    "homepage_url": "https://github.com/xlarp/PwnCord",
     "icons": {
         "128": "icon.png"
     },

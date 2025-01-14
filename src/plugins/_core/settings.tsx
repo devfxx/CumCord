@@ -27,7 +27,6 @@ import VencordTab from "@components/VencordSettings/VencordTab";
 import { Devs } from "@utils/constants";
 import { getIntlMessage } from "@utils/discord";
 import definePlugin, { OptionType } from "@utils/types";
-import { React } from "@webpack/common";
 
 import gitHash from "~git-hash";
 
@@ -85,12 +84,12 @@ export default definePlugin({
         return [
             {
                 section: SectionTypes.HEADER,
-                label: "CumCord",
+                label: "PwnCord",
                 className: "vc-settings-header"
             },
             {
                 section: "VencordSettings",
-                label: "CumCord",
+                label: "PwnCord",
                 element: VencordTab,
                 className: "vc-settings"
             },
@@ -190,7 +189,7 @@ export default definePlugin({
     options: {
         settingsLocation: {
             type: OptionType.SELECT,
-            description: "Where to put the CumCord settings section",
+            description: "Where to put the PwnCord settings section",
             options: [
                 { label: "At the very top", value: "top" },
                 { label: "Above the Nitro section", value: "aboveNitro", default: true },

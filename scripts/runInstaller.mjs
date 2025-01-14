@@ -32,8 +32,8 @@ import { finished } from "stream/promises";
 import { fileURLToPath } from "url";
 
 const BASE_URL =
-    "https://github.com/devfxx/CumInstaller/releases/latest/download/";
-const INSTALLER_PATH_DARWIN = "CumInstaller.app/Contents/MacOS/CumInstaller";
+    "https://github.com/xlarp/PwnInstaller/releases/latest/download/";
+const INSTALLER_PATH_DARWIN = "PwnInstaller.app/Contents/MacOS/PwnInstaller";
 
 const BASE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILE_DIR = join(BASE_DIR, "dist", "Installer");
@@ -42,11 +42,11 @@ const ETAG_FILE = join(FILE_DIR, "etag.txt");
 function getFilename() {
     switch (process.platform) {
         case "win32":
-            return "CumInstallerCli.exe";
+            return "PwnInstallerCli.exe";
         case "darwin":
-            return "CumInstaller.MacOS.zip";
+            return "PwnInstaller.MacOS.zip";
         case "linux":
-            return "CumInstallerCli-linux";
+            return "PwnInstallerCli-linux";
         default:
             throw new Error("Unsupported platform: " + process.platform);
     }
@@ -61,7 +61,7 @@ async function ensureBinary() {
     const downloadName = join(FILE_DIR, filename);
     const outputFile =
         process.platform === "darwin"
-            ? join(FILE_DIR, "CumInstaller")
+            ? join(FILE_DIR, "PwnInstaller")
             : downloadName;
 
     const etag =
@@ -71,7 +71,7 @@ async function ensureBinary() {
 
     const res = await fetch(BASE_URL + filename, {
         headers: {
-            "User-Agent": "Cumcord (https://github.com/devfxx/CumCord)",
+            "User-Agent": "PwnCord (https://github.com/xlarp/PwnCord)",
             "If-None-Match": etag,
         },
     });
@@ -110,7 +110,7 @@ async function ensureBinary() {
             } catch {}
         };
         logAndRun(
-            `sudo spctl --add '${outputFile}' --label "Cumcord Installer"`
+            `sudo spctl --add '${outputFile}' --label "PwnCord Installer"`
         );
         logAndRun(`sudo xattr -d com.apple.quarantine '${outputFile}'`);
     } else {

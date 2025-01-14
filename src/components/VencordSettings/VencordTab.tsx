@@ -98,7 +98,7 @@ function VencordSettings() {
         ];
 
     return (
-        <SettingsTab title="CumCord Settings">
+        <SettingsTab title="PwnCord Settings">
             <DonateCard image={donateImage} />
             <Forms.FormSection title="Quick Actions">
                 <QuickActionCard>
@@ -266,4 +266,4 @@ function DonateCard({ image }: DonateCardProps) {
     );
 }
 
-export default wrapTab(VencordSettings, "CumCord Settings");
+export default wrapTab(VencordSettings, "PwnCord Settings");

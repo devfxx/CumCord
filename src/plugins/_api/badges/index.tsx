@@ -27,14 +27,14 @@ import { openContributorModal } from "@components/PluginSettings/ContributorModa
 import { Devs } from "@utils/constants";
 import { Logger } from "@utils/Logger";
 import { Margins } from "@utils/margins";
-import { isCumPluginDev, isPluginDev } from "@utils/misc";
+import { isPluginDev, isPwnPluginDev } from "@utils/misc";
 import { closeModal, Modals, openModal } from "@utils/modal";
 import definePlugin from "@utils/types";
 import { Forms, Toasts, UserStore } from "@webpack/common";
 import { User } from "discord-types/general";
 
 const CONTRIBUTOR_BADGE = "https://vencord.dev/assets/favicon.png";
-const CUM_CONTRIBUTOR_BADGE = "https://cdn.throwing.lol/icons/cumcord.png";
+const PWN_CONTRIBUTOR_BADGE = "https://cdn.throwing.lol/icons/pwncord.png";
 
 const ContributorBadge: ProfileBadge = {
     description: "Vencord Contributor",
@@ -44,11 +44,11 @@ const ContributorBadge: ProfileBadge = {
     onClick: (_, { userId }) => openContributorModal(UserStore.getUser(userId))
 };
 
-const CumContributorBadge: ProfileBadge = {
-    description: "CumCord Contributor",
-    image: CUM_CONTRIBUTOR_BADGE,
+const PwnCordBadge: ProfileBadge = {
+    description: "PwnCord Contributor",
+    image: PWN_CONTRIBUTOR_BADGE,
     position: BadgePosition.START,
-    shouldShow: ({ userId }) => isCumPluginDev(userId),
+    shouldShow: ({ userId }) => isPwnPluginDev(userId),
     onClick: (_, { userId }) => openContributorModal(UserStore.getUser(userId))
 };
 
@@ -113,7 +113,7 @@ export default definePlugin({
 
     async start() {
         Vencord.Api.Badges.addBadge(ContributorBadge);
-        Vencord.Api.Badges.addBadge(CumContributorBadge);
+        Vencord.Api.Badges.addBadge(PwnCordBadge);
         await loadBadges();
     },
 

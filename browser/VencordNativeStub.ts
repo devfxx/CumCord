@@ -19,13 +19,13 @@
 /// <reference path="../src/modules.d.ts" />
 /// <reference path="../src/globals.d.ts" />
 
-import monacoHtmlLocal from "file://monacoWin.html?minify";
 import monacoHtmlCdn from "file://../src/main/monacoWin.html?minify";
+import monacoHtmlLocal from "file://monacoWin.html?minify";
 import * as DataStore from "../src/api/DataStore";
-import { debounce } from "../src/utils";
-import { EXTENSION_BASE_URL } from "../src/utils/web-metadata";
-import { getTheme, Theme } from "../src/utils/discord";
 import { getThemeInfo } from "../src/main/themes";
+import { debounce } from "../src/utils";
+import { getTheme, Theme } from "../src/utils/discord";
+import { EXTENSION_BASE_URL } from "../src/utils/web-metadata";
 import { Settings } from "../src/Vencord";
 
 // Discord deletes this so need to store in variable
@@ -59,7 +59,7 @@ window.VencordNative = {
     },
 
     updater: {
-        getRepo: async () => ({ ok: true, value: "https://github.com/devfxx/CumCord" }),
+        getRepo: async () => ({ ok: true, value: "https://github.com/xlarp/PwnCord" }),
         getUpdates: async () => ({ ok: true, value: [] }),
         update: async () => ({ ok: true, value: false }),
         rebuild: async () => ({ ok: true, value: true }),

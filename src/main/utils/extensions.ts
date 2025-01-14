@@ -77,7 +77,7 @@ export async function installExt(id: string) {
 
         const buf = await get(url, {
             headers: {
-                "User-Agent": `Electron ${process.versions.electron} ~ CumCord (https://github.com/devfxx/CumCord)`
+                "User-Agent": `Electron ${process.versions.electron} ~ PwnCord (https://github.com/xlarp/PwnCord)`
             }
         });
 

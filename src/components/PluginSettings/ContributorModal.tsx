@@ -10,7 +10,7 @@ import { useSettings } from "@api/Settings";
 import { classNameFactory } from "@api/Styles";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { Link } from "@components/Link";
-import { CumDevsById, DevsById } from "@utils/constants";
+import { DevsById, PwnDevsById } from "@utils/constants";
 import { fetchUserProfile } from "@utils/discord";
 import { classes, pluralise } from "@utils/misc";
 import { ModalContent, ModalRoot, openModal } from "@utils/modal";
@@ -52,7 +52,7 @@ function ContributorModal({ user }: { user: User; }) {
     const plugins = useMemo(() => {
         const allPlugins = Object.values(Plugins);
 
-        const author = DevsById[user.id] ?? CumDevsById[user.id];
+        const author = DevsById[user.id] ?? PwnDevsById[user.id];
         const pluginsByAuthor = author
             ? allPlugins.filter(p => p.authors.includes(author))
             : allPlugins.filter(p => p.authors.some(a => a.name === user.username));

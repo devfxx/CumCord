@@ -6,7 +6,7 @@ import { addChatBarButton, removeChatBarButton } from "@api/ChatButtons";
 import { addAccessory, removeAccessory } from "@api/MessageAccessories";
 import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
 import { addButton, removeButton } from "@api/MessagePopover";
-import { CumDevs } from "@utils/constants";
+import { PwnDevs } from "@utils/constants";
 import definePlugin from "@utils/types";
 import { ChannelStore } from "@webpack/common";
 
@@ -19,7 +19,7 @@ import { Respond, Rewrite } from "./utils";
 export default definePlugin({
     name: "LLM",
     description: "Use AI to respond to messages and rewrite messages when sending",
-    authors: [CumDevs.Fxx],
+    authors: [PwnDevs.Fxx],
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
 

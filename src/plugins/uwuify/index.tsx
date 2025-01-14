@@ -4,7 +4,7 @@ import "./styles.css";
 
 import { addChatBarButton, removeChatBarButton } from "@api/ChatButtons";
 import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
-import { CumDevs } from "@utils/constants";
+import { PwnDevs } from "@utils/constants";
 import definePlugin from "@utils/types";
 
 import { settings } from "./settings";
@@ -14,7 +14,7 @@ import { KittyChatBarIcon } from "./Uwuify";
 export default definePlugin({
     name: "UwUify",
     description: "Reimplemented the UwUify plugin from Vencord (it got deleted)",
-    authors: [CumDevs.Fxx],
+    authors: [PwnDevs.Fxx],
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
 
