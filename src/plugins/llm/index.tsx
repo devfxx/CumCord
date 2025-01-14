@@ -7,10 +7,10 @@ import { addAccessory, removeAccessory } from "@api/MessageAccessories";
 import { addPreSendListener, removePreSendListener } from "@api/MessageEvents";
 import { addButton, removeButton } from "@api/MessagePopover";
 import { PwnDevs } from "@utils/constants";
+import { sendMessage } from "@utils/discord";
 import definePlugin from "@utils/types";
 import { ChannelStore } from "@webpack/common";
 
-import { sendMessage } from "@utils/discord";
 import { LLmChatBarIcon, LLmIcon } from "./LLM";
 import { LLMAccessory } from "./ModelAccessory";
 import { settings } from "./settings";
@@ -19,7 +19,7 @@ import { Respond, Rewrite } from "./utils";
 export default definePlugin({
     name: "LLM",
     description: "Use AI to respond to messages and rewrite messages when sending",
-    authors: [PwnDevs.Fxx],
+    authors: [PwnDevs.Proto],
     dependencies: ["MessageAccessoriesAPI", "MessagePopoverAPI", "MessageEventsAPI", "ChatInputButtonAPI"],
     settings,
 

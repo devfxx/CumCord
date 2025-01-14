@@ -3,8 +3,7 @@
 }
 
 .vc-llm-modal-header {
-    justify-content: space-between;
-    align-content: center;
+    place-content: center space-between;
 }
 
 .vc-llm-modal-header h1 {

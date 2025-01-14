@@ -102,7 +102,7 @@ function parsePwnDevs() {
 
         const value = pwnDevsDeclaration.initializer.arguments[0];
 
-        if (!isSatisfiesExpression(value) || !isObjectLiteralExpression(value.expression)) throw new Error("Failed to parse cumDevs: not an object literal");
+        if (!isSatisfiesExpression(value) || !isObjectLiteralExpression(value.expression)) throw new Error("Failed to parse pwnDevs: not an object literal");
 
         for (const prop of value.expression.properties) {
             const name = (prop.name as Identifier).text;
